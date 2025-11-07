@@ -4,6 +4,7 @@ import { StockPriceChart } from '@/components/StockPriceChart';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { AvatarFallback } from '@radix-ui/react-avatar';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { STOCK_BY_SYMBOL } from '@/lib/constants';
 
 export default async function StockDetails({ params }: { params: Promise<{ symbol: string }> }) {
   const { symbol } = await params;
@@ -15,8 +16,8 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
     <div className='dark flex h-full w-full flex-col items-center bg-black text-white'>
       <AnimatedSection delay={0} className='mt-8 flex items-center gap-10 p-10'>
         <Avatar className='h-20 w-20'>
-          <AvatarImage src='https://github.com/shadcn.png' alt='@shadcn' />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage src={STOCK_BY_SYMBOL[symbol].img} />
+          <AvatarFallback className='bg-black'>{symbol.slice(0, 2)}</AvatarFallback>
         </Avatar>
         <div>
           <h1 className='text-4xl font-bold'>{overview.Name || 'N/A'}</h1>

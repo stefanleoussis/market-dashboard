@@ -86,3 +86,7 @@ export const STOCKS: Stock[] = [
     img: 'https://res.cloudinary.com/dhw0vijxi/image/upload/v1762526349/download_4_d13szi.png',
   },
 ];
+
+export const STOCK_BY_SYMBOL: Record<string, Stock> = Object.fromEntries(
+  STOCKS.map(stock => [stock.symbol, stock])
+);
