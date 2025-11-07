@@ -12,7 +12,7 @@ export function StockPriceChart({ data }: StockPriceChartProps) {
   return (
     <div className='mb-8'>
       <LineChart
-        className='h-80'
+        className='h-80 select-none'
         data={data}
         index='date'
         categories={['close']}

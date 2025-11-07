@@ -250,7 +250,7 @@ const Legend = React.forwardRef<HTMLOListElement, LegendProps>((props, ref) => {
         ref={scrollableRef}
         tabIndex={0}
         className={cx(
-          'flex h-full',
+          'flex h-full outline-none',
           enableLegendSlider
             ? hasScroll?.right || hasScroll?.left
               ? 'snap-mandatory items-center overflow-auto pr-12 pl-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
@@ -566,7 +566,12 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>((props, ref) 
   }
 
   return (
-    <div ref={ref} className={cx('h-80 w-full', className)} tremor-id='tremor-raw' {...other}>
+    <div
+      ref={ref}
+      className={cx('h-80 w-full **:outline-none', className)}
+      tremor-id='tremor-raw'
+      {...other}
+    >
       <ResponsiveContainer>
         <RechartsLineChart
           data={data}

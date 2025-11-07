@@ -8,8 +8,22 @@ export default function Dashboard() {
         Stock Market Dashboard:
       </div>
       <div className='mt-6 grid grid-cols-1 gap-6 sm:mt-10 sm:gap-8 md:grid-cols-2 lg:grid-cols-3'>
+        <StockCard
+          symbol={'TWV'}
+          name={'TensorWave'}
+          img={
+            'https://res.cloudinary.com/dhw0vijxi/image/upload/v1762526790/author-placeholder_l8mflz.png'
+          }
+          index={0}
+        />
         {STOCKS.map((stock, index) => (
-          <StockCard key={stock.symbol} symbol={stock.symbol} name={stock.name} index={index} />
+          <StockCard
+            key={stock.symbol}
+            symbol={stock.symbol}
+            name={stock.name}
+            img={stock.img}
+            index={index + 1}
+          />
         ))}
       </div>
     </div>
