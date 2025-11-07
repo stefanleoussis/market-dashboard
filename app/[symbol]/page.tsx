@@ -9,7 +9,6 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
   const { symbol } = await params;
 
   const { overview, timeSeries } = await getStockData(symbol);
-
   const chartData = mapTimeSeriesDataToLineChart(timeSeries);
   const latestPrice = chartData[chartData.length - 1]?.close;
   return (
@@ -35,9 +34,9 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
       </AnimatedSection>
       <AnimatedSection
         delay={0.1}
-        className='mt-10 w-full max-w-4xl rounded-md border bg-[#1A1A1A] p-6'
+        className='mx-10 mt-10 max-w-4xl rounded-md border bg-[#1A1A1A] p-6 sm:w-full'
       >
-        <dl className='grid grid-cols-2 gap-x-8 gap-y-4 border-b border-gray-700 pb-6'>
+        <dl className='grid grid-cols-1 gap-x-8 gap-y-4 border-b border-gray-700 pb-6 sm:grid-cols-2'>
           <div>
             <dt className='text-sm text-gray-400'>Asset Type</dt>
             <dd className='mt-1 font-medium text-[#00CED1]'>{overview.AssetType || 'N/A'}</dd>
@@ -58,7 +57,7 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
             <dd className='mt-1 font-medium text-[#00CED1]'>{overview.Industry || 'N/A'}</dd>
           </div>
 
-          <div className='col-span-2'>
+          <div className='col-span-1 sm:col-span-2'>
             <dt className='text-sm text-gray-400'>Market Capitalization</dt>
             <dd className='mt-1 font-medium text-[#00CED1]'>
               {overview.MarketCapitalization || 'N/A'}
@@ -71,7 +70,7 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
           <p className='text-sm leading-relaxed text-gray-300'>{overview.Description || 'N/A'}</p>
         </div>
       </AnimatedSection>
-      <AnimatedSection delay={0.2} className='mt-10 h-full w-full max-w-4xl'>
+      <AnimatedSection delay={0.2} className='mt-10 h-full w-full max-w-4xl px-4 pb-70 sm:pb-0'>
         <StockPriceChart data={chartData} />
       </AnimatedSection>
     </div>

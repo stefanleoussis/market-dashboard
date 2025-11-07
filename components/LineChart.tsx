@@ -362,7 +362,7 @@ type PayloadItem = {
 interface ChartTooltipProps {
   active: boolean | undefined;
   payload: PayloadItem[];
-  label: string;
+  label: string | number | undefined;
   valueFormatter: (value: number) => string;
 }
 
@@ -518,7 +518,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>((props, ref) 
   const yAxisDomain = getYAxisDomain(autoMinValue, minValue, maxValue);
   const hasOnValueChange = !!onValueChange;
   const prevActiveRef = React.useRef<boolean | undefined>(undefined);
-  const prevLabelRef = React.useRef<string | undefined>(undefined);
+  const prevLabelRef = React.useRef<string | number | undefined>(undefined);
 
   function onDotClick(itemData: any, event: React.MouseEvent) {
     event.stopPropagation();
