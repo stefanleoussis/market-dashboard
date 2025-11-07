@@ -3,6 +3,7 @@ import { mapTimeSeriesDataToLineChart } from '@/lib/chartUtils';
 import { StockPriceChart } from '@/components/StockPriceChart';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { AvatarFallback } from '@radix-ui/react-avatar';
+import { AnimatedSection } from '@/components/AnimatedSection';
 
 export default async function StockDetails({ params }: { params: Promise<{ symbol: string }> }) {
   const { symbol } = await params;
@@ -11,10 +12,9 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
 
   const chartData = mapTimeSeriesDataToLineChart(timeSeries);
   const latestPrice = chartData[chartData.length - 1]?.close;
-
   return (
     <div className='dark flex h-full w-full flex-col items-center bg-black text-white'>
-      <header className='mt-8 flex items-center gap-10 p-10'>
+      <AnimatedSection delay={0} className='mt-8 flex items-center gap-10 p-10'>
         <Avatar className='h-20 w-20'>
           <AvatarImage src='https://github.com/shadcn.png' alt='@shadcn' />
           <AvatarFallback>CN</AvatarFallback>
@@ -32,8 +32,11 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
             </div>
           </dl>
         </div>
-      </header>
-      <div className='mt-10 w-full max-w-4xl rounded-md border bg-[#1A1A1A] p-6'>
+      </AnimatedSection>
+      <AnimatedSection
+        delay={0.1}
+        className='mt-10 w-full max-w-4xl rounded-md border bg-[#1A1A1A] p-6'
+      >
         <dl className='grid grid-cols-2 gap-x-8 gap-y-4 border-b border-gray-700 pb-6'>
           <div>
             <dt className='text-sm text-gray-400'>Asset Type</dt>
@@ -67,10 +70,10 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
           <h2 className='mb-3 text-lg font-semibold text-gray-200'>Description</h2>
           <p className='text-sm leading-relaxed text-gray-300'>{overview.Description || 'N/A'}</p>
         </div>
-      </div>
-      <div className='mt-10 h-full w-full max-w-4xl'>
+      </AnimatedSection>
+      <AnimatedSection delay={0.2} className='mt-10 h-full w-full max-w-4xl'>
         <StockPriceChart data={chartData} />
-      </div>
+      </AnimatedSection>
     </div>
   );
 }
