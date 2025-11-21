@@ -8,8 +8,12 @@ export interface ChartDataPoint {
 }
 
 export function mapTimeSeriesDataToLineChart(timeSeries: TimeSeriesDaily): ChartDataPoint[] {
-  const dailyData = timeSeries['Time Series (Daily)'];
+  if (!timeSeries || !timeSeries['Time Series (Daily)']) {
+    console.error('Invalid time series data:', timeSeries);
+    return [];
+  }
 
+  const dailyData = timeSeries['Time Series (Daily)'];
   const sortedEntries = Object.entries(dailyData).reverse();
 
   const chartData: ChartDataPoint[] = [];
