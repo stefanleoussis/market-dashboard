@@ -47,7 +47,7 @@ export function StockCard({ symbol, name, img, index }: StockCardProps) {
           )}
         </div>
       ) : (
-        <Link href={`/${symbol}`}>
+        <Link href={`/${symbol}`} prefetch={false}>
           <div className='group relative flex h-22 items-center justify-between rounded-md bg-linear-to-br from-[#1A1A1A] via-[#1F1F1F] to-[#252525] p-5 transition-all duration-500 hover:scale-105 hover:from-[#252525] hover:to-[#1A1A1A]'>
             <div className='absolute inset-0 rounded-md bg-linear-to-br from-[#00CED1]/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
             <div className='relative flex items-center gap-4'>
