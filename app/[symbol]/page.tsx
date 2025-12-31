@@ -6,6 +6,8 @@ import { AvatarFallback } from '@radix-ui/react-avatar';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { STOCK_BY_SYMBOL } from '@/lib/constants';
 
+export const dynamic = 'force-dynamic';
+
 export default async function StockDetails({ params }: { params: Promise<{ symbol: string }> }) {
   const { symbol } = await params;
   try {
