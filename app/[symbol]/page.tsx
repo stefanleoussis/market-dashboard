@@ -80,6 +80,10 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
     );
   } catch (error) {
     console.error('Error fetching stock data:', error);
-    return <div>Error loading stock data. Please try again.</div>;
+    return (
+      <div className='dark flex h-screen w-screen flex-col items-center bg-black text-white'>
+        Error loading stock data. Please try again.
+      </div>
+    );
   }
 }
