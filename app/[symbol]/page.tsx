@@ -81,8 +81,8 @@ export default async function StockDetails({ params }: { params: Promise<{ symbo
   } catch (error) {
     console.error('Error fetching stock data:', error);
     return (
-      <div className='dark flex h-screen w-screen flex-col items-center bg-black text-white'>
-        Error loading stock data. Please try again.
+      <div className='dark flex h-screen w-screen flex-col items-center bg-black pt-10 text-white'>
+        Error loading stock data (Free API limit exceeded). Please try again.
       </div>
     );
   }
